@@ -18,18 +18,22 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           root_file: main.tex  # Make sure this matches your .tex file name
+        
+    # --- NEW STEP: Rename the file ---
+      - name: Rename PDF
+        run: mv main.pdf Habib_Ullah_Yeasin_Resume.pdf
 
       - name: Upload PDF as Artifact
         uses: actions/upload-artifact@v4
         with:
           name: resume-pdf
-          path: main.pdf 
+          path: Habib_Ullah_Yeasin_Resume.pdf 
 
       - name: Update Release
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: main.pdf
+          files: Habib_Ullah_Yeasin_Resume.pdf
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -40,5 +44,5 @@ jobs:
           publish_dir: ./ 
           publish_branch: pdf-hosting
           keep_files: true
-          include_files: main.pdf
+          include_files: Habib_Ullah_Yeasin_Resume.pdf, index.html
           force_orphan: true

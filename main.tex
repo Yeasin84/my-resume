@@ -1,0 +1,142 @@
+\documentclass[10pt,letterpaper]{article}
+
+% ----- Minimal, Overleaf-safe packages -----
+\usepackage[
+  ignoreheadfoot,
+  top=1.6cm, bottom=1.6cm, left=1.6cm, right=1.6cm,
+  footskip=0.6cm
+]{geometry}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{xcolor}
+\definecolor{myblue}{RGB}{0,102,204}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{charter}
+\usepackage{fontawesome5}
+
+% ----- Basic setup -----
+\pagestyle{empty}
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\definecolor{primaryColor}{RGB}{0,0,0}
+\hypersetup{colorlinks=true,urlcolor=primaryColor}
+\titleformat{\section}{\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+\titlespacing{\section}{-1pt}{5pt}{3pt}
+
+% Bullets
+\renewcommand{\labelitemi}{\textendash}
+\newenvironment{highlights}{
+  \begin{itemize}[topsep=2pt,parsep=1pt,partopsep=0pt,itemsep=0pt,leftmargin=10pt]
+}{\end{itemize}}
+
+% ----- Personal Info -----
+\newcommand{\Name}{Md. Habib Ullah Yeasin}
+\newcommand{\Role}{Flutter Developer}
+\newcommand{\Location}{Zam Zam Tower, Mohakhali, Banani, Dhaka, Bangladesh}
+\newcommand{\Email}{habibullahyeasin@outlook.com}
+\newcommand{\Phone}{+880 1303 219937}
+\newcommand{\LinkedIn}{https://linkedin.com/in/md-habib-ullah-yeasin}
+% GitHub is not strictly required for PM but good to show tech background
+\newcommand{\GitHub}{https://github.com/Yeasin84} 
+
+\begin{document}
+
+% ---------- Header ----------
+\begin{center}
+    {\fontsize{23pt}{23pt}\selectfont \Name}\par
+    \vspace{2pt}
+    {\Large \textcolor{myblue}{\Role}}\par
+    \small
+    \faMapMarker*~\Location \par
+    \vspace{2pt}
+    \faEnvelope~\href{mailto:\Email}{\Email} ~•~
+    \faPhone~\href{tel:\Phone}{\Phone} ~•~
+    \faLinkedin~\href{\LinkedIn}{LinkedIn} ~•~
+    \faGithub~\href{\GitHub}{GitHub}
+\end{center}
+
+\vspace{3pt}
+
+% ======================= SUMMARY =======================
+\section{Professional Summary}
+Results-driven Flutter Developer with \textbf{1+ years of practical experience} in building high-performance, cross-platform mobile applications. Proficient in \textbf{Dart}, \textbf{Flutter framework}, and \textbf{modern mobile architecture}. Expert in REST \textbf{API integration}, \textbf{JSON handling}, and complex state management using \textbf{Provider and Riverpod}. Passionate about collaborating with designers to implement pixel-perfect UI/UX and thriving in fast-paced production environments.
+\vspace{5pt}
+
+% ======================== SKILLS =========================
+\section{Technical Skills}
+\noindent
+\textbf{Mobile Development:} Flutter, Dart, Android (Native Integration), iOS (Basic) \\[2pt]
+\textbf{State Management:} Provider, Riverpod, GetX (Advanced), Async Programming (Futures/Streams) \\[2pt]
+\textbf{Architecture:} Clean Architecture, MVC, MVVM, Dependency Injection \\[2pt]
+\textbf{Backend \& API:} REST APIs, JSON Parsing, \textbf{Firebase (Auth, Firestore}, FCM, Storage) \\[2pt]
+\textbf{Tools \& DevOps:} Git, GitHub, VS Code, Android Studio, \textbf{Postman (Certified)}, Figma
+
+\vspace{5pt}
+
+% ======================== PROJECTS =========================
+\section{Flutter Development Experience}
+
+% --- Project 1 ---
+\textbf{AroggyaPath} $|$ \textit{Role: Lead Flutter Developer}
+\hfill \href{https://github.com/Yeasin84/AroggyaPath.git}
+{\textcolor{myblue}{\faGithub}}
+\href{https://docs.google.com/presentation/d/10b3HphnqcUrSLe6pjGhUV1HGRvQXor6Jl4Ls2WsCkmc/edit?usp=sharing}{\textcolor{myblue}{\faFilePowerpoint}}\\
+\textit{Comprehensive Healthcare Application}
+\begin{highlights}
+  \item \textbf{Architecture:} Built a scalable app using \textbf{Clean Architecture} principles to ensure maintainability and testability.
+  \item \textbf{State Management:} Implemented Provider and Riverpod for efficient state \textbf{handling across complex user flows} (appointments, medical records).
+  \item \textbf{API Integration:} \textbf{Integrated RESTful APIs} to fetch real-time health news and manage user data via JSON, ensuring smooth data synchronization.
+  \item \textbf{Features:} Developed real-time appointment scheduling using \textbf{Firebase Firestore}, integrated FCM for \textbf{push notifications}, and implemented \textbf{secure Authentication}.
+  \item \textbf{UI/UX:} Created a responsive, adaptive UI with dark/light mode switching, adhering to modern material design principles.
+\end{highlights}
+
+\vspace{5pt}
+
+% --- Project 2 ---
+\noindent
+\textbf{GetX Showcase} \hfill \href{https://github.com/Yeasin84/getx_showcase}{\textcolor{myblue}{\faGithub}}\\
+\textit{Advanced UI \& State Pattern Demo}
+\begin{highlights}
+  \item Demonstrated mastery of \textbf{reactive programming} and dependency injection.
+  \item Implemented advanced \textbf{routing and theme management}, showcasing deep knowledge of the Flutter Framework.
+\end{highlights}
+
+\vspace{5pt}
+
+% ======================= EDUCATION =======================
+\section{Education}
+\noindent\begin{tabularx}{\linewidth}{@{}X>{\raggedleft\arraybackslash}p{4.3cm}@{}}
+\textbf{University of Frontier Technology, Bangladesh}\\[-3pt]
+\textbf{B.Sc. in Educational Technology and Engineering (EdTEE)}
+&
+\shortstack[r]{Jan 2020 -- Jan 2025\\ CGPA: 3.28/4.00}
+\end{tabularx}
+
+\vspace{1pt}
+\textit{A multidisciplinary program integrating software development, instructional design, networking, and engineering principles.}\\[3pt]
+\textbf{Relevant Coursework:} Mobile Application Development, Data Structures \& Algorithms, OOP, Database Management Systems, Networking, Software Engineering, Database Systems, Cloud Computing, Testing \& QA.
+\vspace{5pt}
+
+% ======================== CERTIFICATIONS =========================
+\section{Certifications}
+\begin{highlights}
+  \item \textbf{SQL (Basics) Certified (HackerRank)} -- Validates strong relational database knowledge.
+  \href{https://www.hackerrank.com/certificates/539f8885f96a}{\textcolor{myblue}{\faExternalLink*}}
+  \item \textbf{Postman API Fundamentals Student Expert – Postman, 2025}
+  \href{https://badges.parchment.com/public/assertions/fN9nswpfR1WrnmD2XuL_bQ}{\textcolor{myblue}{\faExternalLink*}}
+  
+  \item \textbf{AWS Academy Graduate:} Introduction to Cloud (2025)
+  \href{https://www.credly.com/badges/a7885fd8-c50d-4134-ba82-bb392fe1f139}{\textcolor{myblue}{\faExternalLink*}}
+  
+  \item \textbf{CS Fundamentals With Phitron (2025)} -- Focus on C++ and Data Structures.
+  \href{https://phitron.io/course-details/batch3}{\textcolor{myblue}{\faExternalLink*}}
+  
+  \item \textbf{Soft Skill: 21st Century Core Employability Skills Development Program – Wadhwani Foundation, 2023} 
+  \href{https://web.certificate.wfglobal.org/en/certificate?certificateId=657185118c30de8667bdadc4}{\textcolor{myblue}{\faExternalLink*}}\\
+  Achieved 90\% score in the “Competencies of Job Ready Modules” under Wadhwani Opportunity’s global workforce readiness initiative.
+\end{highlights}
+
+
+\end{document}

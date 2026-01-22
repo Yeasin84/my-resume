@@ -1,0 +1,42 @@
+name: Build Resume PDF
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Compile LaTeX
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: main.tex  # Change this to your file name (e.g., resume.tex)
+          # If you use specific packages, the action usually handles them automatically.
+
+      - name: Upload PDF as Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: Habib_Ullah_Yeasin_Resume-pdf
+          path: main.pdf # This matches your root_file name
+
+      - name: Update Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: main.pdf
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      # OPTIONAL: This step forces the PDF to be available on a stable link without tags
+      - name: Deploy to Branch (for stable link)
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./ 
+          publish_branch: pdf-hosting
+          keep_files: true
+          include_files: main.pdf

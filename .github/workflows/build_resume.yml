@@ -17,7 +17,7 @@ jobs:
       - name: Compile LaTeX
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: main.tex  # Make sure this matches your .tex file name
+          root_file: main.tex  # This MUST match your filename
 
       - name: Upload PDF as Artifact
         uses: actions/upload-artifact@v4

@@ -17,32 +17,37 @@ jobs:
       - name: Compile LaTeX
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: main.tex  # Make sure this matches your .tex file name
-        
-    # --- NEW STEP: Rename the file ---
-      - name: Rename PDF
-        run: mv main.pdf Habib_Ullah_Yeasin_Resume.pdf
+          root_file: main.tex
 
+      # 1. Create a clean folder and move the PDF there
+      - name: Prepare Deployment Files
+        run: |
+          mkdir resume_assets
+          mv main.pdf resume_assets/Habib_Ullah_Yeasin_Resume.pdf
+          echo '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="refresh" content="0; url=Habib_Ullah_Yeasin_Resume.pdf"><title>Redirecting...</title></head><body><p>Opening Resume... <a href="Habib_Ullah_Yeasin_Resume.pdf">Click here</a></p></body></html>' > resume_assets/index.html
+
+      # 2. Upload the artifacts (Optional but good for backup)
       - name: Upload PDF as Artifact
         uses: actions/upload-artifact@v4
         with:
           name: resume-pdf
-          path: Habib_Ullah_Yeasin_Resume.pdf 
+          path: resume_assets/Habib_Ullah_Yeasin_Resume.pdf
 
+      # 3. Update the Release (Downloadable backup)
       - name: Update Release
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: Habib_Ullah_Yeasin_Resume.pdf
+          files: resume_assets/Habib_Ullah_Yeasin_Resume.pdf
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      # 4. Deploy ONLY the clean folder (No warnings!)
       - name: Deploy to Branch
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./ 
+          publish_dir: ./resume_assets  # This is the key fix
           publish_branch: pdf-hosting
-          keep_files: true
-          include_files: Habib_Ullah_Yeasin_Resume.pdf, index.html
+          keep_files: false
           force_orphan: true
